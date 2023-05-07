@@ -5,6 +5,40 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.conteudo-container{
+    min-height: 100%;
+    
+}
+
+.conteudo{
+    padding: 20px;
+    padding-bottom: 50px;
+    align-items: center;
+	justify-content: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px auto;
+    min-height: 50px;
+    width: 100%;
+    background-color: #0084ff;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.33;
+    color: rgb(255, 255, 255);
+    padding: 40px 0px;
+    position: absolute;
+    height: 50px;
+    margin-top: -50px;
+}
+
 .acessar-container{
     display: flex;
     order: 4;
@@ -33,8 +67,8 @@
 
 .menu-cadastro{
     border: none;
-    border-radius: 30%;
-    background-color: #b095f03a;
+    border-radius: 10%;
+    background-color: #bbdeff;
     
 }
 
@@ -52,7 +86,7 @@
 .janela-login{
 	width: 100vw;
 	height: 100vh;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	background-color: #00000080;
@@ -89,4 +123,3 @@
 	cursor: pointer;
     font-weight: 1000;
 }
-

@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-
-=======
 function abrirLogin(){
     const modal = document.getElementById('janela-login')
     modal.classList.add('abrir')
@@ -42,4 +39,3 @@ function mostrarSlides(n){
     slides[slideIndex-1].style.display="block";
     bolinhas[slideIndex-1].className+= " active";
 }
->>>>>>> Stashed changes
