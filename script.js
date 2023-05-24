@@ -1,4 +1,15 @@
-// JavaScript code to handle slider functionality
+function abrirLogin(){
+  const modal = document.getElementById('janela-login')
+  modal.classList.add('abrir')
+
+modal.addEventListener('click',(e) => {
+  if(e.target.id == 'fechar' || e.target.id == 'janela-login'){
+      modal.classList.remove('abrir')
+  }
+})
+}
+
+// JavaScript, variáveis para o slider
 const slider = document.querySelector('.slider');
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
@@ -17,7 +28,7 @@ function showSlide(n) {
 
   slides[slideIndex].style.display = 'block';
 
-  // Update counter
+  // Update do contador
   counter.textContent = `${slideIndex + 1}/${slideCount}`;
 }
 
@@ -29,27 +40,27 @@ function prevSlide() {
   showSlide(slideIndex - 1);
 }
 
-// Event listeners for arrow buttons
+// Event listeners para setas
 nextBtn.addEventListener('click', nextSlide);
 prevBtn.addEventListener('click', prevSlide);
 
-// Automatically advance the slider
+// Avançar o slider automaticamente
 let intervalId;
 
 function startSlide() {
-  intervalId = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+  intervalId = setInterval(nextSlide, 5000); // muda a cada 5 segundos
 }
 
 function stopSlide() {
   clearInterval(intervalId);
 }
 
-// Pause the auto slide when hovering over the slider container
+// Pausa quando o mouse está em cima
 slider.addEventListener('mouseover', stopSlide);
 
-// Resume the auto slide when the mouse leaves the slider container
+// Sai do pause quando o mouse sai de cima
 slider.addEventListener('mouseout', startSlide);
 
-// Initial display
+// Iniciar o Slider
 showSlide(slideIndex);
 startSlide();
