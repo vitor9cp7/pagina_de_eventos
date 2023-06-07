@@ -23,10 +23,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO tbl_usuarios (nome, email, password) VALUES ('$nome', '$email', '$senha')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Usuário cadastrado com sucesso!";
-    } else {
-        echo "Erro ao cadastrar o usuário: " . $conn->error;
-    }
+    // Cadastro realizado com sucesso
+    session_start();
+    $_SESSION['cadastroSucesso'] = true;
+    
+    // Redirecionar para a página de cadastro com a mensagem de sucesso exibida
+    header("Location: cadastro.html");
+    exit();
+} else {
+    // Erro no cadastro, exibir mensagem de erro
+    echo "Erro ao cadastrar: " . $conn->error;
+}
 }
 
 // Fechar conexão com o banco de dados

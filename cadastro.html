@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
+    <script src="scriptcad.js"></script>
+    
     <style>
         body {
             background-color: #f2f2f2;
@@ -58,6 +60,16 @@
             font-size: 16px;
             margin-top: 10px;
         }
+
+        .cadastro-sucesso-mensagem {
+        display: none;
+        background-color: #c7f0c7;
+        color: #009900;
+        padding: 10px;
+        text-align: center;
+        margin-top: 10px;
+    }
+        
     </style>
     </head>
     <body>
@@ -76,6 +88,11 @@
     
                 <button type="submit">Cadastrar</button>
             </form>
+            <div id="cadastro-sucesso-mensagem" class="cadastro-sucesso-mensagem">
+                Cadastro realizado com sucesso!
+            </div>
         </div>
+            
+        
     </body>
     </html>

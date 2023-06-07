@@ -64,3 +64,4 @@ slider.addEventListener('mouseout', startSlide);
 // Iniciar o Slider
 showSlide(slideIndex);
 startSlide();
+
