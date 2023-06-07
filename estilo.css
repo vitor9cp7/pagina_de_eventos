@@ -5,6 +5,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+<<<<<<< HEAD
+a:link, a:visited, a:hover, a:active{
+	color: inherit;
+	text-decoration: none;
+}
+
+=======
+>>>>>>> 57177c94708b07c609217da75c94af34bae71ec2
 header{
     background-color: #beecff80;
     height: 135px;
@@ -75,7 +83,6 @@ footer{
     border: none;
     border-radius: 10%;
     background-color: #bbdeff;
-    
 }
 
 .logo{
@@ -192,7 +199,11 @@ footer{
 	transition: 0.6s ease;
 	border-radius: 0 3px 3px 0;
 	user-select: none;
-  -webkit-text-stroke: 1px rgb(238, 224, 224); /* Add stroke effect */
+<<<<<<< HEAD
+   -webkit-text-stroke: 1px rgb(238, 224, 224); /* Add stroke effect */
+=======
+    -webkit-text-stroke: 1px rgb(238, 224, 224); /* Add stroke effect */
+>>>>>>> 57177c94708b07c609217da75c94af34bae71ec2
 }
 
 .next{
@@ -210,6 +221,7 @@ footer{
 	padding: 8px 12px;
 	position: absolute;
 	top: 0;
+<<<<<<< HEAD
   z-index: 999;
 }
 
@@ -261,10 +273,21 @@ footer{
   }
   20% {
     opacity: 1;
+=======
+    z-index: 999;
+    
+}
+
+  .slider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+>>>>>>> 57177c94708b07c609217da75c94af34bae71ec2
   }
   80% {
     opacity: 1;
   }
+<<<<<<< HEAD
   100% {
     opacity: 0;
   }
@@ -277,3 +300,59 @@ footer{
 .faixa{
   background-color: antiquewhite;
 }
+=======
+  
+  .slider-arrow {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    padding: 10px;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+
+  .slider img {
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-in {
+    animation: fade-in 5s infinite;
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .faixa-eventos{
+    height: 350px;
+  }
+
+  .faixa{
+    background-color: antiquewhite;
+  }
+>>>>>>> 57177c94708b07c609217da75c94af34bae71ec2
