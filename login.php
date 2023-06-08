@@ -11,19 +11,12 @@ $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die("Falha na conexão com o banco de dados: " . $conn->connect_error);
 }
-// ...
-?>
 
-<?php
 // Código PHP para verificar a autenticação do usuário
 $isLoggedIn = false;
-
 // Verifique a autenticação do usuário aqui
 // Se o usuário estiver autenticado, defina $isLoggedIn como true
 
-?>
-
-<?php
 // Processar envio do formulário de login
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -34,22 +27,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-    // As credenciais estão corretas
-    session_start();
+        // As credenciais estão corretas
+        session_start();
 
-    // Armazenar o nome do usuário na sessão
-    $row = $result->fetch_assoc();
-    $_SESSION['nome'] = $row['nome'];
-    $_SESSION['isLoggedIn'] = true; // Definir a sessão de autenticação
+        // Armazenar o nome do usuário na sessão
+        $row = $result->fetch_assoc();
+        $_SESSION['nome'] = $row['nome'];
+        $isLoggedIn = true;
 
-    // Redirecionar para a página de perfil do usuário ou outra página de sua escolha
-    header("Location: index.html");
-    exit();
-} else {
-    // Credenciais inválidas, exibir uma mensagem de erro ou redirecionar para uma página de erro
-    echo "Credenciais inválidas. Tente novamente.";
+        // Redirecionar para a página principal ou outra página de sua escolha
+        echo '<script>window.location.href = "index.html";</script>';
+    } else {
+        // Credenciais inválidas, exibir uma mensagem de erro ou redirecionar para uma página de erro
+        echo "Credenciais inválidas. Tente novamente.";
+    }
 }
-}
+$isLoggedIn = isset($_SESSION['nome']);
 
 // ...
 ?>

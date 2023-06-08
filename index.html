@@ -20,10 +20,11 @@
             </div>
         </div>
         <div class="acessar-container">
-            <button onclick="abrirLogin()" id="btn-login" type="button" class="menu-login"> Acesse sua Conta</button>
-            <button id="btn-cadastro" type="button" class="menu-cadastro"><a href="cadastro.html" target="_blank">Cadastre-se</a></button>
-            <a target="_blank" href="" id="btn-criador" color="default" class="" tabindex="-1">Área do Produtor</a>
-       </div>
+          <button onclick="abrirLogin()" id="btn-login" type="button" class="menu-login"> Acesse sua Conta</button>
+          <button id="btn-cadastro" type="button" class="menu-cadastro"><a href="cadastro.html" target="_blank">Cadastre-se</a></button>
+          <span id="nome-usuario" style="display: none;"></span>
+          <a target="_blank" href="" id="btn-criador" color="default" class="" tabindex="-1">Área do Produtor</a>
+        </div>
 
     </header>
     <div class="conteudo-container">
@@ -80,7 +81,7 @@
 			<button class="fechar" id="fechar">X</button>
 			<h2 class="msg-login">Faça seu Login</h2>
 			<form class="login-form" method="post" action="login.php">
-				<p><label for="email">E-mail: <input type="email" id="senha" name="email" placeholder="Digite seu E-mail" required></label></p>
+				<p><label for="email">E-mail: <input type="email" id="email" name="email" placeholder="Digite seu E-mail" required></label></p>
 				<p><label for="senha">Senha: <input type="password" id="senha" name="senha" placeholder="Digite sua Senha" required></label></p>
 				<p>
 				<button class="btn-login" type="submit">Log-in</button>

@@ -65,3 +65,51 @@ slider.addEventListener('mouseout', startSlide);
 showSlide(slideIndex);
 startSlide();
 
+//Script da funcionalidade de login
+
+// Verificar se o usuário está logado
+// Verificar se o usuário está logado
+fetch('get_nome_usuario.php')
+  .then((response) => response.text())
+  .then((data) => {
+    const nomeUsuarioElement = document.getElementById('nome-usuario');
+    nomeUsuarioElement.textContent = 'Bem-vindo ' + data;
+    nomeUsuarioElement.style.display = 'inline';
+  })
+  .catch((error) => {
+    console.log('Erro ao obter o nome do usuário:', error);
+  });
+
+if (isLoggedIn) {
+  // Exibir o nome do usuário
+  const nomeUsuarioElement = document.getElementById('nome-usuario');
+  nomeUsuarioElement.textContent = 'Bem-Vindo ' + '<?php echo $_SESSION['nome']; ?>';
+  nomeUsuarioElement.style.display = 'inline';
+  document.getElementById('btn-login').style.display = 'none';
+  document.getElementById('btn-cadastro').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  function getNomeUsuario() {
+      // Fazer uma requisição para obter o nome do usuário do servidor
+      // Você pode usar AJAX, fetch, ou qualquer outra forma de requisição assíncrona
+      // Por exemplo, se você estiver usando jQuery, pode fazer algo assim:
+      $.ajax({
+          url: 'get_nome_usuario.php',
+          success: function(nome) {
+              exibirNomeUsuario(nome);
+          }
+      });
+  }
+
+  function exibirNomeUsuario(nome) {
+      var nomeUsuarioElement = document.getElementById('nome-usuario');
+      nomeUsuarioElement.textContent = "Bem-Vindo, " + nome;
+      nomeUsuarioElement.style.display = 'block';
+      document.getElementById('btn-login').style.display = 'none';
+      document.getElementById('btn-cadastro').style.display = 'none';
+  }
+
+  // Verificar se o usuário está logado e exibir o nome do usuário, se necessário
+  getNomeUsuario();
+});
