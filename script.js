@@ -67,27 +67,20 @@ startSlide();
 
 //Script da funcionalidade de login
 
-// Verificar se o usuário está logado
-// Verificar se o usuário está logado
-fetch('get_nome_usuario.php')
-  .then((response) => response.text())
-  .then((data) => {
-    const nomeUsuarioElement = document.getElementById('nome-usuario');
-    nomeUsuarioElement.textContent = 'Bem-vindo ' + data;
-    nomeUsuarioElement.style.display = 'inline';
-  })
-  .catch((error) => {
-    console.log('Erro ao obter o nome do usuário:', error);
-  });
+$.ajax({
+  url: 'login.php',
+  method: 'POST',
+  data: {param1: valor1, param2: valor2}, // Se você precisar enviar dados para o servidor
+  success: function(response) {
+    // O código a ser executado quando a requisição for bem-sucedida
+    console.log(response); // Exemplo: exibir a resposta no console
+  },
+  error: function(xhr, status, error) {
+    // O código a ser executado se ocorrer um erro na requisição
+    console.log(error); // Exemplo: exibir o erro no console
+  }
+});
 
-if (isLoggedIn) {
-  // Exibir o nome do usuário
-  const nomeUsuarioElement = document.getElementById('nome-usuario');
-  nomeUsuarioElement.textContent = 'Bem-Vindo ' + '<?php echo $_SESSION['nome']; ?>';
-  nomeUsuarioElement.style.display = 'inline';
-  document.getElementById('btn-login').style.display = 'none';
-  document.getElementById('btn-cadastro').style.display = 'none';
-}
 
 document.addEventListener('DOMContentLoaded', function() {
   function getNomeUsuario() {

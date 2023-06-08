@@ -333,3 +333,7 @@ footer{
 
   }
 
+.responsive {
+  width: 100%;
+  height: auto;
+}

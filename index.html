@@ -7,12 +7,13 @@
     <link rel="icon" type="image/x-icon" href="images/viol.png">
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
-</head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
 <body>
     <header>
         <div class="menu-container">
             <div class="logo">
-                <img src="images/logo.png">
+                <a href="index.html"><img src="images/logo.png"></a>
             </div>
             <div class="busca">
                 <input type="text" id="txtBusca" placeholder="Faça sua busca...">
@@ -76,13 +77,13 @@
 
         </div>
     </div>
-    <div class="janela-login" id="janela-login">
+       <div class="janela-login" id="janela-login">
 		<div class="modal">
 			<button class="fechar" id="fechar">X</button>
 			<h2 class="msg-login">Faça seu Login</h2>
 			<form class="login-form" method="post" action="login.php">
-				<p><label for="email">E-mail: <input type="email" id="email" name="email" placeholder="Digite seu E-mail" required></label></p>
-				<p><label for="senha">Senha: <input type="password" id="senha" name="senha" placeholder="Digite sua Senha" required></label></p>
+				<p><label for="email">E-mail: <input type="email" name="email" placeholder="Digite seu E-mail" required></label></p>
+				<p><label for="senha">Senha: <input type="password" name="senha" placeholder="Digite sua Senha" required></label></p>
 				<p>
 				<button class="btn-login" type="submit">Log-in</button>
 				</p>

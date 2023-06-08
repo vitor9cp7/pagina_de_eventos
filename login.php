@@ -36,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $isLoggedIn = true;
 
         // Redirecionar para a página principal ou outra página de sua escolha
-        echo '<script>window.location.href = "index.html";</script>';
+        header("Location: index.html");
+        exit();
     } else {
         // Credenciais inválidas, exibir uma mensagem de erro ou redirecionar para uma página de erro
         echo "Credenciais inválidas. Tente novamente.";
