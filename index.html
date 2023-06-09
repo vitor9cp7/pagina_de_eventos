@@ -8,7 +8,57 @@
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </head>
+    <script src="script.js"></script>
+    <script>
+      $(document).ready(function() {
+          $.ajax({
+              url: "verifica_login.php",
+              type: "POST",
+              dataType: "json",
+              success: function(response) {
+                  if (response.isLoggedIn) {
+                      $("#btn-login").hide();
+                      $("#btn-cadastro").hide();
+                      $("#nome-usuario").text("Bem-vindo, " + response.nomeUsuario);
+                      $("#nome-usuario").show();
+                  }
+              }
+          });
+      });
+      
+      $(document).ready(function() {
+    $.ajax({
+        url: "get_nome_usuario.php",
+        type: "GET",
+        dataType: "json",
+        success: function(response) {
+            if (response.nomeUsuario !== '') {
+                $('#btn-login').hide();
+                $('#btn-usuario').show();
+                $('#nome-usuario').text('Bem-vindo, ' + response.nomeUsuario);
+            } else {
+                $('#btn-login').show();
+                $('#btn-usuario').hide();
+                $('#nome-usuario').text('');
+                $('#btn-logout').hide();
+            }
+        }
+    });
+});
+      
+      $(document).ready(function() {
+      $('#btn-logout').click(function() {
+       $.ajax({
+      url: 'logout.php',
+      success: function() {
+        // Redirecionar para a página de login ou outra página de sua escolha
+        window.location.href = 'index.html';
+      }
+    });
+  });
+});
+  </script>
+    </head>
 <body>
     <header>
         <div class="menu-container">
@@ -20,10 +70,12 @@
                 <button id="btn-busca" type="submit"><img id="btn-busca" src="images/luparoxa.png" alt="Buscar..."></button>
             </div>
         </div>
+        
         <div class="acessar-container">
+          <span id="nome-usuario"></span>
+          <button id="btn-logout">Sair</button> 
           <button onclick="abrirLogin()" id="btn-login" type="button" class="menu-login"> Acesse sua Conta</button>
           <button id="btn-cadastro" type="button" class="menu-cadastro"><a href="cadastro.html" target="_blank">Cadastre-se</a></button>
-          <span id="nome-usuario" style="display: none;"></span>
           <a target="_blank" href="" id="btn-criador" color="default" class="" tabindex="-1">Área do Produtor</a>
         </div>
 
@@ -94,7 +146,6 @@
     <footer>
         Aqui fica o rodapé
     </footer>
-<script src="script.js"></script>
 </body>
 </html>
 

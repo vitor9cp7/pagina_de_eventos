@@ -3,8 +3,11 @@
 session_start();
 
 if (isset($_SESSION['nome'])) {
-    echo $_SESSION['nome'];
+    $nomeUsuario = $_SESSION['nome'];
 } else {
-    echo '';
+    $nomeUsuario = '';
 }
+
+$response = array('nomeUsuario' => $nomeUsuario);
+echo json_encode($response);
 ?>

@@ -23,10 +23,10 @@ function showSlide(n) {
   slideIndex = (n + slideCount) % slideCount;
 
   slides.forEach((slide) => {
-    slide.style.display = 'none';
+    slide.classList.remove('active');
   });
 
-  slides[slideIndex].style.display = 'block';
+  slides[slideIndex].classList.add('active');
 
   // Update do contador
   counter.textContent = `${slideIndex + 1}/${slideCount}`;
@@ -65,44 +65,28 @@ slider.addEventListener('mouseout', startSlide);
 showSlide(slideIndex);
 startSlide();
 
-//Script da funcionalidade de login
-
-$.ajax({
-  url: 'login.php',
-  method: 'POST',
-  data: {param1: valor1, param2: valor2}, // Se você precisar enviar dados para o servidor
-  success: function(response) {
-    // O código a ser executado quando a requisição for bem-sucedida
-    console.log(response); // Exemplo: exibir a resposta no console
-  },
-  error: function(xhr, status, error) {
-    // O código a ser executado se ocorrer um erro na requisição
-    console.log(error); // Exemplo: exibir o erro no console
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
+// Script da funcionalidade de exibir usuario
+$(document).ready(function() {
   function getNomeUsuario() {
-      // Fazer uma requisição para obter o nome do usuário do servidor
-      // Você pode usar AJAX, fetch, ou qualquer outra forma de requisição assíncrona
-      // Por exemplo, se você estiver usando jQuery, pode fazer algo assim:
-      $.ajax({
-          url: 'get_nome_usuario.php',
-          success: function(nome) {
-              exibirNomeUsuario(nome);
-          }
-      });
+    $.ajax({
+      url: 'get_nome_usuario.php',
+      success: function(response) {
+        exibirNomeUsuario(response);
+      }
+    });
   }
 
-  function exibirNomeUsuario(nome) {
-      var nomeUsuarioElement = document.getElementById('nome-usuario');
-      nomeUsuarioElement.textContent = "Bem-Vindo, " + nome;
-      nomeUsuarioElement.style.display = 'block';
-      document.getElementById('btn-login').style.display = 'none';
-      document.getElementById('btn-cadastro').style.display = 'none';
+  function exibirNomeUsuario(response) {
+    if (response !== '') {
+      $('#btn-login').hide();
+      $('#btn-usuario').show();
+      $('#nome-usuario').text('Bem-vindo, ' + response);
+    } else {
+      $('#btn-login').show();
+      $('#btn-usuario').hide();
+      $('#nome-usuario').text('');
+    }
   }
 
-  // Verificar se o usuário está logado e exibir o nome do usuário, se necessário
   getNomeUsuario();
 });
