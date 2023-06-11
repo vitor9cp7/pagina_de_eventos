@@ -11,25 +11,70 @@ modal.addEventListener('click',(e) => {
 
 // JavaScript, variáveis para o slider
 const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slider img');
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const counter = document.querySelector('.counter');
 
 let slideIndex = 0;
-const slides = document.querySelectorAll('.slider img');
-const slideCount = slides.length;
+let isTransitioning = false;
+
+function fadeIn(element) {
+  let opacity = 0;
+  const duration = 500; // Duração da transição em milissegundos
+  const increment = 1 / (duration / 10); // Incremento do valor de opacidade
+
+  element.style.opacity = '0';
+  element.style.display = 'block';
+
+  function animate() {
+    opacity += increment;
+    element.style.opacity = opacity.toString();
+
+    if (opacity < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+
+  animate();
+}
+
+function fadeOut(element) {
+  let opacity = 1;
+  const duration = 500; // Duração da transição em milissegundos
+  const decrement = 1 / (duration / 10); // Decremento do valor de opacidade
+
+  function animate() {
+    opacity -= decrement;
+    element.style.opacity = opacity.toString();
+
+    if (opacity > 0) {
+      requestAnimationFrame(animate);
+    } else {
+      element.style.display = 'none';
+    }
+  }
+
+  animate();
+}
 
 function showSlide(n) {
-  slideIndex = (n + slideCount) % slideCount;
+  if (isTransitioning) {
+    return;
+  }
 
-  slides.forEach((slide) => {
-    slide.classList.remove('active');
-  });
+  isTransitioning = true;
 
-  slides[slideIndex].classList.add('active');
+  fadeOut(slides[slideIndex]);
 
-  // Update do contador
-  counter.textContent = `${slideIndex + 1}/${slideCount}`;
+  setTimeout(() => {
+    slideIndex = (n + slides.length) % slides.length;
+
+    fadeIn(slides[slideIndex]);
+
+    counter.textContent = `${slideIndex + 1}/${slides.length}`;
+    isTransitioning = false;
+  }, 500); // Tempo de espera antes de mostrar a próxima imagem em milissegundos
 }
 
 function nextSlide() {
@@ -40,53 +85,28 @@ function prevSlide() {
   showSlide(slideIndex - 1);
 }
 
-// Event listeners para setas
+// Atualiza a exibição do slide atual e do contador
+function updateSlideView() {
+  fadeIn(slides[slideIndex]);
+  counter.textContent = `${slideIndex + 1}/${slides.length}`;
+}
+
+// Event listeners para as setas
 nextBtn.addEventListener('click', nextSlide);
 prevBtn.addEventListener('click', prevSlide);
 
+// Iniciar o slider
+updateSlideView();
+
 // Avançar o slider automaticamente
-let intervalId;
+let intervalId = setInterval(nextSlide, 5000); // Avança a cada 5 segundos
 
-function startSlide() {
-  intervalId = setInterval(nextSlide, 5000); // muda a cada 5 segundos
-}
-
-function stopSlide() {
+// Pausar quando o mouse estiver sobre o slider
+slider.addEventListener('mouseover', () => {
   clearInterval(intervalId);
-}
+});
 
-// Pausa quando o mouse está em cima
-slider.addEventListener('mouseover', stopSlide);
-
-// Sai do pause quando o mouse sai de cima
-slider.addEventListener('mouseout', startSlide);
-
-// Iniciar o Slider
-showSlide(slideIndex);
-startSlide();
-
-// Script da funcionalidade de exibir usuario
-$(document).ready(function() {
-  function getNomeUsuario() {
-    $.ajax({
-      url: 'get_nome_usuario.php',
-      success: function(response) {
-        exibirNomeUsuario(response);
-      }
-    });
-  }
-
-  function exibirNomeUsuario(response) {
-    if (response !== '') {
-      $('#btn-login').hide();
-      $('#btn-usuario').show();
-      $('#nome-usuario').text('Bem-vindo, ' + response);
-    } else {
-      $('#btn-login').show();
-      $('#btn-usuario').hide();
-      $('#nome-usuario').text('');
-    }
-  }
-
-  getNomeUsuario();
+// Retomar a reprodução quando o mouse sair do slider
+slider.addEventListener('mouseout', () => {
+  intervalId = setInterval(nextSlide, 5000); // Reinicia o intervalo
 });

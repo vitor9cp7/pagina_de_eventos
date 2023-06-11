@@ -30,15 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['isLoggedIn'] = true;
         $_SESSION['expireTime'] = time() + 3600; // Definir o tempo de expiração da sessão (1 hora neste exemplo)
 
-        // Redirecionar para a página principal ou outra página de sua escolha
-        header("Location: index.html");
+        $response = array('success' => true, 'redirect' => 'index.html');
+        echo json_encode($response);
         exit();
     } else {
-        // Credenciais inválidas, exibir uma mensagem de erro ou redirecionar para uma página de erro
-        $_SESSION['isLoggedIn'] = false;
-        header("Location: index.html"); // Redirecionar para a página de login novamente
+        // Credenciais inválidas, exibir uma mensagem de erro
+        $response = array('success' => false, 'message' => 'Usuário ou senha inválidos');
+        echo json_encode($response);
         exit();
     }
 }
+
+// Redirecionar para a página principal ou outra página de sua escolha
+header("Location: index.html");
 $conn->close();
 ?>

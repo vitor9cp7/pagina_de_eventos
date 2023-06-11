@@ -8,56 +8,7 @@
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-      $(document).ready(function() {
-          $.ajax({
-              url: "verifica_login.php",
-              type: "POST",
-              dataType: "json",
-              success: function(response) {
-                  if (response.isLoggedIn) {
-                      $("#btn-login").hide();
-                      $("#btn-cadastro").hide();
-                      $("#nome-usuario").text("Bem-vindo, " + response.nomeUsuario);
-                      $("#nome-usuario").show();
-                  }
-              }
-          });
-      });
-      
-      $(document).ready(function() {
-    $.ajax({
-        url: "get_nome_usuario.php",
-        type: "GET",
-        dataType: "json",
-        success: function(response) {
-            if (response.nomeUsuario !== '') {
-                $('#btn-login').hide();
-                $('#btn-usuario').show();
-                $('#nome-usuario').text('Bem-vindo, ' + response.nomeUsuario);
-            } else {
-                $('#btn-login').show();
-                $('#btn-usuario').hide();
-                $('#nome-usuario').text('');
-                $('#btn-logout').hide();
-            }
-        }
-    });
-});
-      
-      $(document).ready(function() {
-      $('#btn-logout').click(function() {
-       $.ajax({
-      url: 'logout.php',
-      success: function() {
-        // Redirecionar para a página de login ou outra página de sua escolha
-        window.location.href = 'index.html';
-      }
-    });
-  });
-});
-  </script>
+    <script src="login.js"></script>
     </head>
 <body>
     <header>
@@ -83,15 +34,15 @@
     <div class="conteudo-container">
         <div class="conteudo">
             <br><br>
-            <h1 class="title-slide" style="text-align: center">Sensações do Momento</h1>
+            <h1 class="title-slide" style="text-align: center">Eventos em Alta</h1>
 
       <div class="slideshow-container">
         <div class="counter"></div>
         <div class="slider">
-          <img class="fade-in" src="images/anavitoria.jpg" alt="Image 1">
-          <img class="fade-in" src="images/c6fest.jpg" alt="Image 2">
-          <img class="fade-in" src="images/imagined.png" alt="Image 3">
-          <img class="fade-in" src="images/lud.jpg" alt="Image 3">
+          <img src="images/anavitoria.jpg" alt="Image 1">
+          <img src="images/c6fest.jpg" alt="Image 2">
+          <img src="images/imagined.png" alt="Image 3">
+          <img src="images/lud.jpg" alt="Image 3">
           </div>
         <button class="slider-arrow prev">&#8249;</button>
         <button class="slider-arrow next">&#8250;</button>
@@ -129,23 +80,33 @@
 
         </div>
     </div>
-       <div class="janela-login" id="janela-login">
-		<div class="modal">
-			<button class="fechar" id="fechar">X</button>
-			<h2 class="msg-login">Faça seu Login</h2>
-			<form class="login-form" method="post" action="login.php">
-				<p><label for="email">E-mail: <input type="email" name="email" placeholder="Digite seu E-mail" required></label></p>
-				<p><label for="senha">Senha: <input type="password" name="senha" placeholder="Digite sua Senha" required></label></p>
-				<p>
-				<button class="btn-login" type="submit">Log-in</button>
-				</p>
-			</form>
-		</div>
-	</div>
+    <div class="janela-login" id="janela-login">
+        <div class="modal">
+          <button class="fechar" id="fechar">X</button>
+          <h2 class="msg-login">Faça seu Login</h2>
+          <form class="login-form" id="login-form"method="post" action="login.php">
+            <p><label for="email">E-mail: <input type="email" name="email" placeholder="Digite seu E-mail" required></label></p>
+            <p><label for="senha">Senha: <input type="password" name="senha" placeholder="Digite sua Senha" required></label></p>
+            <p>
+            <button class="btn-login" type="submit">Log-in</button>
+            </p>
+          </form>
+        </div>
+	  </div>
+    <div id="mensagem-erro" style="display: none; color: red;"></div>
+    <!-- <div id="modal-error" class="modal-error">
+      <div class="modal">
+        <button class="fechar" id="fechar">X</button>
+        <h2>Usuário ou senha inválidos</h2>
+        <p>Por favor, verifique suas credenciais e tente novamente.</p>
+      </div>
+    </div> -->
     <br><br>
     <footer>
         Aqui fica o rodapé
     </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>
 
