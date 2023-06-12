@@ -50,7 +50,7 @@ $(document).ready(function() {
           $('#btn-login').hide();
           $('#btn-usuario').show();
           $('#btn-cadastro').hide();
-          $('#nome-usuario').text('Bem-vindo, ' + response.nomeUsuario);
+          $('#nome-usuario').text('Bem-vindo(a), ' + response.nomeUsuario);
         } else {
           $('#btn-login').show();
           $('#btn-usuario').hide();

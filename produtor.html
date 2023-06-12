@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Anuncie seu evento conosco!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="images/viol.png">
+    <link rel="stylesheet" type="text/css" href="produtorestilo.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+<body>
+    <header>
+        <div class="banner">
+            <div class="banner-texto"><p>Gostaria de Anunciar seu Evento em Nosso site?</p><p>Preencha o Fomulário e Entraremos em Contato</p></div>
+            </div>
+        </div>
+    </header>
+    <div class="cadastro-container">
+        <div class="conteudo">
+            <form class="contato" id="contato" method="post" action="contatoinfo.php">
+                <p><label for="nome_empresa">Nome/Empresa: <input type="text" name="nome_empresa" placeholder="Digite nome da empresa" required></label></p>
+                <p><label for="email">E-mail: <input type="email" name="email" placeholder="Digite seu E-mail" required></label></p>
+                <p><label for="telefone">Telefone: <input type="text" name="telefone" placeholder="Digite seu Número de Telefone" required></label></p>
+                <p><label for="evento">Evento: <input type="text" name="evento" placeholder="Digite o Nome do Evento" required></label></p>
+                <p><label for="tipo_evento">Tipo de Evento: <input type="text" name="tipo_evento" placeholder="Digite Tipo de Evento" required></label></p>
+                <p><label for="data">Data: <input type="date" name="data" placeholder="Digite a Data do Evento" required></label></p>
+                <p><label for="descricao">Descrição do Evento: <input type="text" name="descricao" placeholder="Digite a Descrição do Evento" required></label></p>
+                <p>
+                    <button class="btn-envio" type="submit">Enviar</button>
+                </p>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+
+    </footer>
+    <script>
+        $(document).ready(function() {
+            $('#contato').submit(function(event) {
+                event.preventDefault(); // Impede o envio do formulário
+    
+                // Código para obter os valores dos campos de entrada
+                var nomeEmpresa = $('input[name="nome_empresa"]').val();
+                var email = $('input[name="email"]').val();
+                var telefone = $('input[name="telefone"]').val();
+                var evento = $('input[name="evento"]').val();
+                var tipoEvento = $('input[name="tipo_evento"]').val();
+                var data = $('input[name="data"]').val();
+                var descricao = $('input[name="descricao"]').val();
+    
+                // Código para exibir o alerta e enviar uma requisição AJAX para o arquivo PHP
+                $.ajax({
+                    url: "contatoinfo.php",
+                    type: "POST",
+                    data: {
+                        nome_empresa: nomeEmpresa,
+                        email: email,
+                        telefone: telefone,
+                        evento: evento,
+                        tipo_evento: tipoEvento,
+                        data: data,
+                        descricao: descricao
+                    },
+                    success: function(response) {
+                        alert("Dados inseridos com sucesso.");
+                        // Restaurar o formulário ou redirecionar para outra página, se necessário
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                        alert("Erro ao inserir dados. Verifique o console para mais informações.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
+
+<!-- 010bd0 azul escuro e 0084ff azul claro

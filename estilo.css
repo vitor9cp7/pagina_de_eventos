@@ -1,8 +1,9 @@
+/* Conteudo Principal */
 *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -13,123 +14,147 @@ a:link, a:visited, a:hover, a:active{
 
 
 header{
-    background-color: #beecff80;
-    height: 135px;
+  background-color: #92a7fa;
+  height: 135px;
 }
 
 .conteudo-container{
-    min-height: 100%;
-    margin-top: -25px;
+  min-height: 100%;
+  margin-top: -25px;
 }
 
 .conteudo{
-    padding: 20px;
-    padding-bottom: 50px;
-    align-items: center;
-	  justify-content: center;
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-
+  padding: 20px;
+  padding-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 footer{
-    display: flex;
-    flex-direction: column;
-    -webkit-box-align: center;
-    align-items: center;
-    margin: 0px auto;
-    min-height: 50px;
-    width: 100%;
-    background-color: #0084ff;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.33;
-    color: rgb(255, 255, 255);
-    padding: 40px 0px;
-    position: absolute;
-    height: 50px;
-    margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: 0px auto;
+  min-height: 50px;
+  width: 100%;
+  background-color: #849cfe;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  color: rgb(255, 255, 255);
+  padding: 40px 0px;
+  position: absolute;
+  height: 50px;
+  margin-top: -50px;
 }
 
+.hr1{
+  position: fixed;
+  top: 125px;
+  height: 2px;
+  width: 100%;
+  background-color: #fdfdfd;
+}
+
+.hr2{
+  position: fixed;
+  top: 130px;
+  height: 2px;
+  width: 100%;
+  background-color: #fdfdfd;
+}
+
+/* Área do Header */
+
 .acessar-container{
-    display: flex;
-    order: 4;
-    flex: 0 1 auto;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    justify-content: right;
-    column-gap: 20px;
-    margin: 35px 50px;
-    width: auto;
+  display: flex;
+  order: 4;
+  flex: 0 1 auto;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  justify-content: right;
+  column-gap: 20px;
+  margin: 35px 50px;
+  width: auto;
 }
 
 .menu-login,.menu-cadastro,#nome-usuario{
-
-    text-transform: uppercase;
-    font-size: 95%;
-    font-weight: 500;
-    color: rgba(165, 63, 255, 0.682);
-    margin-top: 2.5px;
+  text-transform: uppercase;
+  font-size: 95%;
+  font-weight: 500;
+  color: #192446;
+  margin-top: 1.0px;
 }
+
 .menu-login,.menu-cadastro{
-cursor: pointer;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
-.menu-login{
-    background-color: transparent;
-    border: none;
+.menu-login:hover,.menu-cadastro:hover{
+  background-color: #f2f2f2;
+  transition: 0.5s ease;
+  transform: scale(1.05);
 }
 
-.menu-cadastro{
-    border: none;
-    border-radius: 10%;
-    background-color: #bbdeff;
+.btn-logout{
+  cursor: pointer;
+  border: #192446;
+  background-color: transparent;
+  margin-left: -50px;
+  margin-top: 25px;
 }
 
 .logo{
-    height: 20px;
+  height: 20px;
 }
 
 .logo img{
-    border-radius: 50%;
-    margin-left: 70px;
-    height: 150px;
-    width: auto;
+  border-radius: 50%;
+  margin-left: 70px;
+  height: 150px;
+  width: auto;
 }
 
 #btn-busca{
-    position: relative;
-    margin-top: 3px;
-    width: 35px;
-    height: auto;
-    background-color: transparent;
-    outline-style: none;
-    border: none;
-    cursor: pointer;
+  position: relative;
+  margin-top: 3px;
+  width: 35px;
+  height: auto;
+  background-color: transparent;
+  outline-style: none;
+  border: none;
+  cursor: pointer;
 }
 
 .busca{
-    position: absolute;
-    background-color: #9cc9f4;
-    border:solid 1px;
-    border-radius:15px;
-    width:300px;
-    margin-left: 250px;
-    margin-top: 35px;
+  position: absolute;
+  background-color: #9cc9f4;
+  border:solid 1px;
+  border-radius:15px;
+  width:300px;
+  margin-left: 250px;
+  margin-top: 35px;
 }
 
 #txtBusca{
-    float:left;
-    background-color:transparent;
-    padding-left:5px;
-    font-style:italic;
-    font-size:15px;
-    border:none;
-    outline: none;
-    height:32px;
-    width:260px;
+  float:left;
+  background-color:transparent;
+  padding-left:5px;
+  font-style:italic;
+  font-size:15px;
+  border:none;
+  outline: none;
+  height:32px;
+  width:260px;
 }
+
+/* Janela Modal de Login */
 
 .janela-login{
 	width: 100vw;
@@ -181,6 +206,8 @@ cursor: pointer;
   margin-top: 10px;
 }
 
+/* Slider de Eventos */
+
 .slideshow-container{
 	max-width: 500px;
   height: 350px;
@@ -199,14 +226,14 @@ cursor: pointer;
 	font-weight: bold;
 	font-size: 18px;
 	transition: 0.6s ease;
-	border-radius: 3px 3px 3px 3px;
+	border-radius: 5px 5px 5px 5px;
 	user-select: none;
-  -webkit-text-stroke: 1px rgb(238, 224, 224); /* Add stroke effect */
+  -webkit-text-stroke: 1px rgb(238, 224, 224); /* Adiciona Efeito Stroke */
 }
 
 .next{
 	right: 0;
-	border-radius: 3px 3px 3px 3px;
+	border-radius: 5px 5px 5x 5px;
 }
 
 .prev:hover, .next:hover{
@@ -215,7 +242,7 @@ cursor: pointer;
 
 .counter{
 	color: #f2f2f2;
-	font-size: 12px;
+	font-size: 15px;
 	padding: 8px 12px;
 	position: absolute;
 	top: 0;
@@ -226,6 +253,7 @@ cursor: pointer;
   display: flex;
   overflow: hidden;
   position: relative;
+  border-radius: 10px;
 }
 
 .slider img {
@@ -253,39 +281,12 @@ cursor: pointer;
   right: 10px;
 }
 
+/* Faixa de Eventos */
+
 .faixa-eventos{
   height: 350px;
 }
 
 .faixa{
   background-color: antiquewhite;
-}
-
-.responsive {
-  width: 100%;
-  height: auto;
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 300px;
-}
-
-/* Estilo para o botão de fechar */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
 }
