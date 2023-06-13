@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['isLoggedIn'] = true;
         $_SESSION['expireTime'] = time() + 3600; // Definir o tempo de expiração da sessão (1 hora neste exemplo)
 
-        $response = array('success' => true, 'redirect' => 'index.html');
+        $response = array('success' => true, 'redirect' => 'index.php');
         echo json_encode($response);
         exit();
     } else {
@@ -41,7 +41,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Redirecionar para a página principal ou outra página de sua escolha
-header("Location: index.html");
 $conn->close();
 ?>

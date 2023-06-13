@@ -53,7 +53,7 @@ footer{
 }
 
 .hr1{
-  position: fixed;
+  position: absolute;
   top: 125px;
   height: 2px;
   width: 100%;
@@ -61,7 +61,7 @@ footer{
 }
 
 .hr2{
-  position: fixed;
+  position: absolute;
   top: 130px;
   height: 2px;
   width: 100%;
@@ -283,10 +283,75 @@ footer{
 
 /* Faixa de Eventos */
 
+/*
 .faixa-eventos{
-  height: 350px;
+  height: 300px;
+  overflow-x: auto;
 }
 
-.faixa{
-  background-color: antiquewhite;
+.faixa {
+  display: inline-flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.faixa img{
+  width: 262px;
+  height: 134px;
+  margin: 0 8px;
+}
+*/
+
+.faixa-eventos {
+
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.eventos-container {
+  display: flex;
+  width: max-content;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.eventos-container .evento {
+  flex: 0 0 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+
+.eventos-container img {
+  width: 262px;
+  height: 134px;
+  margin: 0 8px;
+}
+
+.evento h5{
+  margin-left: 10px;
+}
+
+.scrollEsquerda,
+.scrollDireita {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  -webkit-text-stroke: 1px rgb(238, 224, 224); /* Adiciona Efeito Stroke */
+}
+
+.scrollEsquerda {
+  left: 0;
+}
+
+.scrollDireita {
+  right: 0;
 }

@@ -1,23 +1,23 @@
 html, body
 {
-    margin: 0;
-    padding: 0;
-    background-color: #b7c9ff;
+  margin: 0;
+  padding: 0;
+  background-color: #b7c9ff;
 }
 .banner{
-    background-color: #192446;
-    height: 150px;
-    width: 100%;
-    border-radius: 0 0 200px 200px;
-    color: white;
+  background-color: #192446;
+  height: 150px;
+  width: 100%;
+  border-radius: 0 0 200px 200px;
+  color: white;
 }
 
 .banner-texto{
-    position: absolute;
-    top: 90px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
 }
 
 .banner-texto p{
