@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['nome'] = $row['nome'];
         $_SESSION['isLoggedIn'] = true;
         $_SESSION['expireTime'] = time() + 3600; // Definir o tempo de expiração da sessão (1 hora neste exemplo)
+        $_SESSION['usuario_id'] = $row['id']; // Guardar o ID do usuário na sessão
 
         $response = array('success' => true, 'redirect' => 'index.php');
         echo json_encode($response);

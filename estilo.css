@@ -47,7 +47,7 @@ footer{
   line-height: 1.33;
   color: rgb(255, 255, 255);
   padding: 40px 0px;
-  position: absolute;
+  position: relative;
   height: 50px;
   margin-top: -50px;
 }
@@ -173,8 +173,8 @@ footer{
 	width: 50%;
 	min-width: 450px;
 	min-width: 200px;
-	background-color: #b7c9ff;
-	backdrop-filter: blur(50px);
+	background-color: #b7c9ff88;
+	backdrop-filter: blur(25px);
 	padding: 50px;
 	border-radius: 20px;
 	text-align: center;
@@ -333,7 +333,7 @@ footer{
   position: relative;
 }
 
-.event-thumb{
+.eventophoto{
   width: 262px;
   height: 134px;
   margin: 0 8px;
