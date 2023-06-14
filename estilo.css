@@ -372,3 +372,7 @@ footer{
   right: 5px;
   margin-top: 134px;
 }
+
+.favoritado{
+  content:url(images/heart_icon_full.png);
+}

@@ -6,7 +6,7 @@ $username = 'root';
 $password = '';
 $dbname = 'siteeventos';
 
-// Obtém o ID da classe event-thumb enviado via POST
+// Obtém o ID do evento enviado via POST
 $eventThumbId = $_POST['eventThumbId'];
 $usuarioId = $_SESSION['usuario_id'];
 
@@ -22,15 +22,22 @@ $sqlCheckFavorite = "SELECT id FROM favoritos WHERE id_usuario = $usuarioId AND 
 $resultCheckFavorite = $conn->query($sqlCheckFavorite);
 
 if ($resultCheckFavorite->num_rows > 0) {
-    echo 'Esse evento já está marcado como favorito para o usuário atual.';
+    // O evento já está marcado como favorito, então vamos removê-lo
+    $sqlRemoveFavorite = "DELETE FROM favoritos WHERE id_usuario = $usuarioId AND id_evento = '$eventThumbId'";
+
+    if ($conn->query($sqlRemoveFavorite) === TRUE) {
+        echo 'Evento removido dos favoritos com sucesso!';
+    } else {
+        echo 'Erro ao remover o evento dos favoritos: ' . $conn->error;
+    }
 } else {
-    // Insere o ID do evento e o ID do usuário na tabela
+    // O evento ainda não está marcado como favorito, vamos adicioná-lo
     $sqlInsertFavorite = "INSERT INTO favoritos (id_usuario, id_evento) VALUES ($usuarioId, '$eventThumbId')";
 
     if ($conn->query($sqlInsertFavorite) === TRUE) {
-        echo 'Evento favoritado com sucesso!';
+        echo 'Evento adicionado aos favoritos com sucesso!';
     } else {
-        echo 'Erro ao favoritar o evento: ' . $conn->error;
+        echo 'Erro ao adicionar o evento aos favoritos: ' . $conn->error;
     }
 }
 
